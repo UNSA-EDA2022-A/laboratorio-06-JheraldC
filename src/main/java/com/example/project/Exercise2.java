@@ -21,7 +21,18 @@ public class Exercise2 {
 
 
     public <T extends Comparable<T>> boolean bstIguales(BST<T> a1, BST<T> a2){
-
-        return false;
+        return bstIguales(a1.root,a2.root);
+    }
+    public <T extends Comparable<T>> boolean bstIguales(Node<T> n1, Node<T> n2){
+    	if(n1==null && n2==null) {
+    		return true;
+    	}
+    	if(n1==null || n2==null) {
+    		return false;
+    	}
+    	else if(n1.data.compareTo(n2.data) != 0) {
+    		return false;
+    	}
+        return (bstIguales(n1.left, n2.left) && bstIguales(n1.right, n2.right));
     }
 }

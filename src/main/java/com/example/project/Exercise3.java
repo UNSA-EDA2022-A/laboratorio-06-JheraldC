@@ -18,8 +18,17 @@ public class Exercise3 {
     }
 
 
-    public <T extends Comparable<T>> boolean bstEstrictamenteBinario(BST<T> a){
-
-        return false;
+    public <T extends Comparable<T>> boolean bstEstrictamenteBinario(BST<T> a){    
+        return nodoEstrictamentebinario(a.root);
+    }
+    
+    public <T extends Comparable<T>> boolean nodoEstrictamentebinario(Node<T> n){
+        if(n.left == null && n.right == null) {
+            return true;
+        }
+        if(n.left == null && n.right != null || n.left != null && n.right == null) {
+            return false;
+        }
+        return (nodoEstrictamentebinario(n.left) && nodoEstrictamentebinario(n.right));
     }
 }
